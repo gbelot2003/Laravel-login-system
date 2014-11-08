@@ -1,0 +1,54 @@
+
+Comenzando con laravel
+
+1. Las configuraciones base, comienzan en el siguiente orden
+- Routin
+- Controller
+- Views
+
+
+Configurando Routing
+--------------------------------------------
+Route::get('/' array(
+	as => home,
+	'users' => 'HomeContreoller@home'
+));
+--------------------------------------------
+
+la tiempo creamos la funcion "home" en el controlador
+
+--------------------------------------------
+Class HomeController extends BaseController {
+	public function home(){
+		return 'Home.';
+	}
+}
+--------------------------------------------
+
+Ahora creamos el archivo de vista con extencion ".blade.php"
+de esta forma tendremos las ventajas de blade en la vista
+que vamos a instanciar. -(Blade is a theme engene)-
+
+home.blade.php
+
+
+Ahora cambiamos la configuración del controller de la siguiente manera
+
+--------------------------------------------
+Class HomeController extends BaseController {
+	public function home(){
+		return View::make('Home.');
+	}
+}
+--------------------------------------------
+
+y en la visa 
+
+----------------------------
+{{ hello }}
+
+De esta forma, le decimos al framework que imprima en
+la "Vista" el contenido de las variable que publiquemos 
+en el controlador.
+
+
