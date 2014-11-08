@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration {
 
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('email')->unique; //size 60
-			$table->string('password'); // size 60
-			$table->string('password_temp'); // size 60
-			$table->string('code'); // size 10
+			$table->string('email', 60)->unique; //size 60
+			$table->string('password', 60); // size 60
+			$table->string('password_temp', 60); // size 60
+			$table->string('code', 10); // size 10
 			$table->integer('active'); 
 			$table->timestamps();
 			$table->rememberToken();

@@ -29,7 +29,7 @@ class AccountController extends BaseController{
 			// Activation Code
 			$code 		= str_random(60);
 
-			$user = User::create(array(
+			$user = Users::create(array(
 				'email' => $email,
 				'username' => $username,
 				'password' => Hash::make($password),
@@ -49,7 +49,7 @@ class AccountController extends BaseController{
 	}
 
 	public function getActivate($code){
-		$user = User::where('code', '=', $code)->where('active', '=', 0);
+		$user = Users::where('code', '=', $code)->where('active', '=', 0);
 		if($user->count()):
 
 			$user = $user->first();
@@ -134,7 +134,7 @@ class AccountController extends BaseController{
 
 		} else {
 			// Changes Password
-			$user = User::find(Auth::user()->id);
+			$user = Users::find(Auth::user()->id);
 			$uOld_password = $user->password;
 
 			$old_password = Input::get('old_password');
@@ -174,7 +174,7 @@ class AccountController extends BaseController{
 					->withErrors($validator)
 					->withInput();
 		}else{
-			$user = User::where('email', '=', Input::get('email'));
+			$user = Users::where('email', '=', Input::get('email'));
 
 			if($user->count()){
 				$user 					= $user->first();
@@ -205,7 +205,7 @@ class AccountController extends BaseController{
 
 
 	public function getRecover($code){
-		$user = User::where('code', '=', $code)
+		$user = Users::where('code', '=', $code)
 			->where('password_temp', '!=', '');
 
 		if($user->count()){

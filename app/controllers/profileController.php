@@ -3,7 +3,7 @@
 Class profileController extends BaseController {
 	public function user($username) {
 
-		$user = User::where('username', '=', $username);
+		$user = Users::where('username', '=', $username);
 
 		if($user->count()){
 			$user = $user->first();

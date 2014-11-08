@@ -3,7 +3,10 @@
 Class HomeController extends BaseController {
 
 	public function home(){
-		return View::make('home');
+		$articles = Articles::All();
+		//return $articles;
+		return View::make('home')
+				->with('articles', $articles);
 	}
 
 }
