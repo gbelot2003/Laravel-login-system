@@ -8,18 +8,30 @@ Route::get('/', array(
 	'uses' => 'HomeController@home'
 ));
 
-
+/***User Profife***/
 Route::get('/user/{username}', array(
 	'as' => 'profile-user',
 	'uses' => 'profileController@user'
 ));
 
+/**Article pages**/
+Route::get('/article/{articleId}', array(
+	'as' => 'article-post',
+	'uses' => 'ArticleController@articlePost'
+));
 
-/* Authenticade Grup */
+/* Sections*/
+Route::get('/sections/{sectionsId}', array(
+	'as' 	=> 'section-post',
+	'uses' 	=> 'SectionsController@sectionsPost'
+));
+
+
+/************************* Authenticade Grup ****************************/
+
 Route::group(array('before' => 'auth'), function(){
 
-
-	/*CSRF protection group*/
+	/***** CSRF protection group *****/
 	Route::group(array('before' => 'csrf'), function(){
 
 		/* Change pasword POST*/
@@ -29,7 +41,6 @@ Route::group(array('before' => 'auth'), function(){
 		));
 
 	});
-
 
 	/* SignIn Post */
 	Route::get('/account/sign-out', array(
@@ -46,10 +57,7 @@ Route::group(array('before' => 'auth'), function(){
 
 });
 
-
-/*
-** Unauthenticade Grupe
-*/
+/**************** Unauthenticade Grupe ****************/
 Route::group(array('before' => 'guest'), function(){
 
 	/*CSRF protection*/
@@ -69,14 +77,12 @@ Route::group(array('before' => 'guest'), function(){
 
 		/*Forgotte Password POST*/
 		Route::post('/account/forgot-password', array(
-			'as' => 'account-forgot-password-post',
-			'uses' => 'AccountController@postForgotPassword'
+			'as' 	=> 'account-forgot-password-post',
+			'uses' 	=> 'AccountController@postForgotPassword'
 		));
-
-
 	});
 
-		/*Create accounte  create Accounte (GET) */
+	/*Create Accounte (GET) */
 	Route::get('/account/create', array(
 		'as' 	=> 'account-create',
 		'uses' 	=> 'AccountController@getCreate'
@@ -102,8 +108,8 @@ Route::group(array('before' => 'guest'), function(){
 
 	/*New Password*/
 	Route::get('/account/recover/{code}', array(
-		'as' => 'account-recover',
-		'uses' => 'AccountController@getRecover'
-
+		'as' 	=> 'account-recover',
+		'uses' 	=> 'AccountController@getRecover'
 	));
+
 });

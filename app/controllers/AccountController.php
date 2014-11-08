@@ -99,7 +99,7 @@ class AccountController extends BaseController{
 				'email' 		=> Input::get('email'),
 				'password' 		=> Input::get('password'),
 				'active'		=> 1
-			), $remember	);
+			), $remember);
 
 			if($auth){
 				return Redirect::intended('/');
