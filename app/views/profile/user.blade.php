@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.profile')
 
 @section('content')
 	<div class="row">
@@ -12,10 +12,4 @@
 		</div>
 	</div>
 	<hr />
-	@foreach($user->articles as $article)
-		<h4><a href="{{URL::route('article-post', $article->id)}}">{{ e($article->title) }}</a></h4>
-		<p>{{ e(Str::limit($article->body, 150)) }}</p>
-		<span><small><a href="{{URL::route('section-post', $article->sections->id)}}">{{ e($article->sections->name)}}</a></small> </span>
-		<hr />
-	@endforeach
 @stop

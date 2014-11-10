@@ -12,14 +12,14 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('articles', function(Blueprint $table)
+		Schema::create('articles', function(Blueprint $table)
 		{
-			$table->engine = 'InnoDB';
+			//$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->integer('users_id');
-			$table->integer('sections_id');
-			$table->string('title', 255);
-			$table->text('body');
+			$table->integer('users_id')->nullable();
+			$table->integer('sections_id')->nullable();
+			$table->string('title')->nullable();
+			$table->text('body')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -31,7 +31,7 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('articles', function(Blueprint $table)
+		Schema::drop('articles', function(Blueprint $table)
 		{
 			Schema::dropIfExists('articles');
 		});

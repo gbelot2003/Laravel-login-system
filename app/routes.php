@@ -14,19 +14,6 @@ Route::get('/user/{username}', array(
 	'uses' => 'profileController@user'
 ));
 
-/**Article pages**/
-Route::get('/article/{articleId}', array(
-	'as' => 'article-post',
-	'uses' => 'ArticleController@articlePost'
-));
-
-/* Sections*/
-Route::get('/sections/{sectionsId}', array(
-	'as' 	=> 'section-post',
-	'uses' 	=> 'SectionsController@sectionsPost'
-));
-
-
 /************************* Authenticade Grup ****************************/
 
 Route::group(array('before' => 'auth'), function(){

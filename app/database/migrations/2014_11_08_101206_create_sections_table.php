@@ -12,11 +12,11 @@ class CreateSectionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('sections', function(Blueprint $table)
+		Schema::create('sections', function(Blueprint $table)
 		{
-			$table->engine = 'InnoDB';
+			//$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('name', 55);
+			$table->string('name')->nullable();
 		});
 	}
 
@@ -27,7 +27,7 @@ class CreateSectionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('sections', function(Blueprint $table)
+		Schema::drop('sections', function(Blueprint $table)
 		{
 			Schema::dropIfExists('sections');
 		});

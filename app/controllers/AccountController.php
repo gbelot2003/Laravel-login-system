@@ -17,9 +17,9 @@ class AccountController extends BaseController{
 			)
 		);
 
-		if($validator->fails()){
+		if($varlidator->fails()){
 			return Redirect::route('account-create')
-					->withErrors($validator)
+					->withErrors($varlidator)
 					->withInput();
 		} else {
 			$email 		= Input::get('email');
@@ -80,16 +80,16 @@ class AccountController extends BaseController{
 	}
 
 	public function postSignIn(){
-		$validator = Validator::make(Input::all(),
+		$varlidator = Validator::make(Input::all(),
 			array(
 				"email" 		=> "required | email",
 				"password" 		=> "required"
 			)
 		);
 
-		if($validator->fails()) {
+		if($varlidator->fails()) {
 			return Redirect::route('account-sign-in')
-				->withErrors($validator)
+				->withErrors($varlidator)
 				->withInput();
 		} else {	
 
@@ -119,7 +119,7 @@ class AccountController extends BaseController{
 	}
 
 	public function postChangePassword(){
-		$validator = Validator::make(Input::all(), 
+		$varlidator = Validator::make(Input::all(), 
 			array(
 				'old_password' 		=> 'required',
 				'password' 			=> 'required | min:6',
@@ -127,10 +127,10 @@ class AccountController extends BaseController{
 			)
 		);
 
-		if($validator->fails()){
+		if($varlidator->fails()){
 			// Redirect
 			return Redirect::route('account-change-password')
-					->withErrors($validator);
+					->withErrors($varlidator);
 
 		} else {
 			// Changes Password
@@ -164,14 +164,14 @@ class AccountController extends BaseController{
 	}
 
 	public function postForgotPassword(){
-		$validator = Validator::make(Input::all(),
+		$varlidator = Validator::make(Input::all(),
 			array(
 				'email' => "required | email"
 			)
 		);
-		if($validator->fails()){
+		if($varlidator->fails()){
 			return Redirect::route('account-forgot-password')
-					->withErrors($validator)
+					->withErrors($varlidator)
 					->withInput();
 		}else{
 			$user = Users::where('email', '=', Input::get('email'));

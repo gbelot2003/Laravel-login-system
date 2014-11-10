@@ -18,7 +18,6 @@
 				@if(Session::has('global'))
 					<p>{{ Session::get('global') }}</p>
 				@endif
-				@include('layout.user_check')
 				@yield('content')
 			</div>
 		</div>

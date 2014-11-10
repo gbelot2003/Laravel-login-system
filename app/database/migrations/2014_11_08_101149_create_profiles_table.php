@@ -12,13 +12,13 @@ class CreateProfilesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('profiles', function(Blueprint $table)
+		Schema::create('profiles', function(Blueprint $table)
 		{
-			$table->engine = 'InnoDB';
+			//$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->string('first_name', 55);
-			$table->string('last_name', 55);
-			$table->string('sign', 255);
+			$table->string('first_name')->nullable();
+			$table->string('last_name')->nullable();
+			$table->string('sign')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -30,7 +30,7 @@ class CreateProfilesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('profiles', function(Blueprint $table)
+		Schema::drop('profiles', function(Blueprint $table)
 		{
 			Schema::dropIfExists('profiles');
 		});
